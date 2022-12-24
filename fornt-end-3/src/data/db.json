@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "name": "NMD s1",
+      "price": 2000,
+      "id": 1
+    },
+    {
+      "name": "NMD",
+      "id": 2
+    },
+    {
+      "name": "r",
+      "price": "4",
+      "imageUrl": "https://res.cloudinary.com/dddzde2ks/image/upload/v1671846383/f3/wma5jrmnubazicjbjtek.png",
+      "id": 3
+    }
+  ]
+}

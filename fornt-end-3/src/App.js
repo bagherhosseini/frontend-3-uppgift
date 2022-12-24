@@ -1,20 +1,28 @@
 import './App.css';
-import{useState} from 'react';
+import Ok from './pages/ok.js';
 import Home from './pages/Home.js';
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Product from './pages/product.js';
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+      <header>
+        <Link to="/Home">home</Link>
+        <Link to="/product">Products</Link>
+        <Link to="/ok">ok</Link>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/Home" element={<Home />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/ok" element={<Ok />} />
+        </Routes>
+      </main>
+      
+   </BrowserRouter>
+  ); 
 }
 
 export default App;
