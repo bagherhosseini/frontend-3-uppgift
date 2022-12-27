@@ -1,5 +1,6 @@
 import { products } from './../data/db.json';
 import React, { useState, useEffect } from 'react';
+import './style.scss';
 
 export default function Product(){
     const [data, setData] = useState(null);
@@ -15,17 +16,19 @@ export default function Product(){
     }, []); 
   
     return (
-      <div>
+      <div className='product-container'>
+        <h3>Alla produkter</h3>
         {data ? (
-          <ul>
+          <ul className='products'>
             {data && data.map(item => (
-              <div key={item.id}>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-                <img src={item.imageUrl} width = '200px'></img>
-                <br></br>
-                <button>ok</button>
-              </div>
+              <li className='product' key={item.id}>
+                <div className='product-content'>
+                  <img src={item.imageUrl}></img>
+                  <p className='productname'>{item.name}</p>
+                  <p>{item.price} SEK</p>
+                  <button>Tabort</button>
+                </div>
+              </li>
             ))}
           </ul>
         ) : (

@@ -6,6 +6,7 @@ import './style.scss';
 export default function Home(){
   const [imageurl, setImageurl] = useState('')
   const [name, setName] = useState('');
+  const [categori, setCategori] = useState('');
   const [price, setPrice] = useState('');
   const Intprice = price;
 
@@ -24,6 +25,7 @@ export default function Home(){
 
     const newProduct ={
       name : name,
+      categori: categori,
       price : Intprice,
       imageUrl : imageurl
     }
@@ -43,6 +45,10 @@ export default function Home(){
 
       <label>Namn</label>
       <input type="text" value={name} onChange={(e)=> setName(e.target.value)} required></input>
+      <br></br>
+
+      <label>Kategori</label>
+      <input type="text" value={categori} onChange={(e)=> setCategori(e.target.value)} required></input>
       <br></br>
 
       <label>Pris</label>
