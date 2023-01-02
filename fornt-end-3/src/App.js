@@ -1,18 +1,21 @@
-import './App.css';
-import Test from './pages/test.js';
-import Home from './pages/Home.js';
-import UserProfile from './pages/Product.js';
-import ProductList from './pages/ProductList.js';
-import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home.js";
+import UserProfile from "./pages/Product.js";
+import ProductList from "./pages/ProductList.js";
+import Test from "./pages/test.js";
+import "./pages/style.scss";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-
   return (
     <BrowserRouter>
-      <header >
-        <Link className='links' to="/">Home</Link>
-        <Link className='links' to="/ProductList">Products</Link>
-        <Link className='links' to="/test">test</Link>
+      <header>
+        <Link className="links" to="/">
+          Home
+        </Link>
+        <Link className="links" to="/ProductList">
+          Products
+        </Link>
       </header>
       <main>
         <Routes>
@@ -22,10 +25,8 @@ function App() {
           <Route path="/test" element={<Test />} />
         </Routes>
       </main>
-      
-   </BrowserRouter>
-  )
-
+    </BrowserRouter>
+  );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 export default function UserProfile() {
@@ -14,18 +14,18 @@ export default function UserProfile() {
     fetchData();
   }, []);
 
-  const filteredData = [...data].filter(item => item.id === Number(userId));
-    
+  const filteredData = [...data].filter((item) => item.id === Number(userId));
+
   return (
     <div>
-        {filteredData && filteredData.map((item) => (
-            <div key={item.id}>
-                <img src={item.imageUrl} alt="product piture"></img>
-                <p className="productname">{item.name}</p>
-                <p>{item.price} SEK</p>
-            </div>
-        ))
-        }
+      {filteredData &&
+        filteredData.map((item) => (
+          <div key={item.id}>
+            <img src={item.imageUrl} alt="product picture"></img>
+            <p className="productname">{item.name}</p>
+            <p>{item.price} SEK</p>
+          </div>
+        ))}
     </div>
   );
 }
