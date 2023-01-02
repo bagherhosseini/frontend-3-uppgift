@@ -1,28 +1,31 @@
 import './App.css';
 import Test from './pages/test.js';
 import Home from './pages/Home.js';
-import Product from './pages/product.js';
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import UserProfile from './pages/Product.js';
+import ProductList from './pages/ProductList.js';
+import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <header>
-        <Link to="/Home">home</Link>
-        <Link to="/product">Products</Link>
-        <Link to="/test">ok</Link>
+      <header >
+        <Link className='links' to="/">Home</Link>
+        <Link className='links' to="/ProductList">Products</Link>
+        <Link className='links' to="/test">test</Link>
       </header>
       <main>
         <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/Product/:userId" element={<UserProfile />} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </main>
       
    </BrowserRouter>
-  ); 
+  )
+
 }
 
 export default App;

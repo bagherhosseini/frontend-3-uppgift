@@ -1,9 +1,9 @@
-import { products } from "./../data/db.json";
+import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import "./style.scss";
 
-export default function Product() {
-  const [data, setData] = useState(null);
+export default function UserProfile() {
+  let { userId } = useParams();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -14,46 +14,18 @@ export default function Product() {
     fetchData();
   }, []);
 
-  async function handleDelete(event) {
-    event.preventDefault();
-    const id = Number(event.target.name);
-    try {
-      const response = await fetch(`http://localhost:3001/products/${id}`, {
-        method: "DELETE",
-      });
-      const result = await response.json();
-      if (result.success) {
-        const index = data.findIndex((item) => item.id === id);
-        data.splice(index, 1);
-        setData([...data]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  const filteredData = [...data].filter(item => item.id === Number(userId));
+    
   return (
-    <div className="product-container">
-      <h3>Alla produkter</h3>
-      {data ? (
-        <ul className="products">
-          {data &&
-            data.map((item) => (
-              <li className="product" key={item.id}>
-                <div className="product-content">
-                  <img src={item.imageUrl}></img>
-                  <p className="productname">{item.name}</p>
-                  <p>{item.price} SEK</p>
-                  <button onClick={handleDelete} name={item.id}>
-                    Radera
-                  </button>
-                </div>
-              </li>
-            ))}
-        </ul>
-      ) : (
-        <p>Loading data...</p>
-      )}
+    <div>
+        {filteredData && filteredData.map((item) => (
+            <div key={item.id}>
+                <img src={item.imageUrl} alt="product piture"></img>
+                <p className="productname">{item.name}</p>
+                <p>{item.price} SEK</p>
+            </div>
+        ))
+        }
     </div>
   );
 }

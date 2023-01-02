@@ -1,5 +1,4 @@
-import{useState, useEffect} from 'react';
-import { useDropzone } from 'react-dropzone';
+import{useState} from 'react';
 import Axios from 'axios';
 import './style.scss';
 
@@ -8,7 +7,7 @@ export default function Home(){
   const [name, setName] = useState('');
   const [categori, setCategori] = useState('');
   const [price, setPrice] = useState('');
-  const Intprice = price;
+  const Intprice = Number(price);
 
   const handlechange = (event) =>{
     const file = event.target.files[0];
