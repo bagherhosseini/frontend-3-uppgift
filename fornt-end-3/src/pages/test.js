@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-import "./style1.scss";
+import { useState } from "react";
 
 export default function test() {
+  function handleFiles(files) {
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+      console.log(file)
+    }
+  }
+
   return (
-    <div class="form__group field">
-      <input
-        type="input"
-        class="form__field"
-        placeholder="Name"
-        name="name"
-        id="name"
-        required
-      />
-      <label for="name" class="form__label">
-        Name
-      </label>
-    </div>
+    <div><input
+    type="file"
+    accept="image/*"
+    multiple
+    onChange={(e) => handleFiles(e.target.files)}
+  /></div>
   );
 }

@@ -67,7 +67,7 @@ export default function ProductList() {
           <option value="desc">Z-A</option>
         </select>
         <form className="filter">
-          <label>
+          <label className="radio-label">
             <input
               type="radio"
               name="filter"
@@ -77,7 +77,7 @@ export default function ProductList() {
             />
             Alla produkter
           </label>
-          <label>
+          <label className="radio-label">
             <input
               type="radio"
               name="filter"
@@ -98,13 +98,14 @@ export default function ProductList() {
                 <Link className="links" to={`/Product/${item.id}`}>
                   <div className="product-content">
                     <img src={item.imageUrl} alt="product piture"></img>
-                    <p className="productname">{item.name}</p>
-
-                    <div className="btn">
-                      <p>{item.price} SEK</p>
-                      <button onClick={handleDelete} name={item.id}>
-                        🗑️
-                      </button>
+                    <div className="product-info">
+                      <p className="productname">{item.name}</p>
+                      <div className="btn">
+                        <p className="product-price">{item.price} SEK</p>
+                        <button onClick={handleDelete} name={item.id}>
+                          <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </Link>

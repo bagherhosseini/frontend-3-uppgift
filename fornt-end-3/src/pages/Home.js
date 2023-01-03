@@ -3,16 +3,16 @@ import Axios from "axios";
 import "./style.scss";
 
 export default function Home() {
-  const [imageurl, setImageurl] = useState("");
+  const [imageurl, setImageurl] = useState([]);
   const [name, setName] = useState("");
   const [categori, setCategori] = useState("");
   const [price, setPrice] = useState("");
+  const [info, setInfo] = useState("");
   const Intprice = Number(price);
-
-  const handlechange = (event) => {
-    const file = event.target.files[0];
+  
+  function handleFiles(files) {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", files);
     formData.append("upload_preset", "emjgys7r");
     Axios.post(
       "https://api.cloudinary.com/v1_1/dddzde2ks/image/upload",
@@ -22,6 +22,8 @@ export default function Home() {
     });
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,6 +31,7 @@ export default function Home() {
       name: name,
       categori: categori,
       price: Intprice,
+      info: info,
       imageUrl: imageurl,
     };
 
@@ -46,10 +49,10 @@ export default function Home() {
     <form className="" onSubmit={handleSubmit}>
       <div className="add-product-form">
         <div className="add-product-content">
-          <div class="form__group field">
+          <div className="form__group field">
             <input
               type="input"
-              class="form__field"
+              className="form__field"
               placeholder="Name"
               name="name"
               id="name"
@@ -57,15 +60,15 @@ export default function Home() {
               onChange={(e) => setName(e.target.value)}
               required
             ></input>
-            <label for="name" class="form__label">
+            <label for="name" className="form__label">
               Name
             </label>
           </div>
 
-          <div class="form__group field">
+          <div className="form__group field">
             <input
               type="input"
-              class="form__field"
+              className="form__field"
               placeholder="Kategori"
               name="Kategori"
               id="Kategori"
@@ -73,14 +76,15 @@ export default function Home() {
               onChange={(e) => setCategori(e.target.value)}
               required
             ></input>
-            <label for="Kategori" class="form__label">
+            <label for="Kategori" className="form__label">
               Kategori
             </label>
           </div>
-          <div class="form__group field">
+
+          <div className="form__group field">
             <input
               type="number"
-              class="form__field"
+              className="form__field"
               placeholder="Pris"
               name="Pris"
               id="Pris"
@@ -88,13 +92,29 @@ export default function Home() {
               onChange={(e) => setPrice(e.target.value)}
               required
             ></input>
-            <label for="Pris" class="form__label">
+            <label for="Pris" className="form__label">
               Pris
             </label>
           </div>
 
+          <div className="form__group field">
+            <input
+              type=""
+              className="form__field input-info"
+              placeholder="Info"
+              name="info"
+              id="info"
+              value={info}
+              onChange={(e) => setInfo(e.target.value)}
+              required
+            ></input>
+            <label for="info" className="form__label">
+              Info
+            </label>
+          </div>
+
           <div className="upload-img">
-            <input type="file" name="file" onChange={handlechange} />
+            <input type="file" name="file" accept="image/*" onChange={(e) => handleFiles(e.target.files)} />
           </div>
 
           <br></br>
