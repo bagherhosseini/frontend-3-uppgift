@@ -10,11 +10,9 @@ export default function Home() {
   const [info, setInfo] = useState("");
   const Intprice = Number(price);
   
-  const handlechange = (event) => {
-    const file = event.target.files[0];
-    console.log(file[1]);
+  function handleFiles(files) {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", files);
     formData.append("upload_preset", "emjgys7r");
     Axios.post(
       "https://api.cloudinary.com/v1_1/dddzde2ks/image/upload",
@@ -116,7 +114,7 @@ export default function Home() {
           </div>
 
           <div className="upload-img">
-            <input type="file" name="file" accept="image/*" multiple onChange={handlechange} />
+            <input type="file" name="file" accept="image/*" onChange={(e) => handleFiles(e.target.files)} />
           </div>
 
           <br></br>
